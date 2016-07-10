@@ -38,3 +38,4 @@ Performance family in order, from best to worst.
 - Linearithmic: O(nlog(n))
 - Quadratic: O(n^2)
 - Exponential: O(2^n)
+  
