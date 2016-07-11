@@ -2,13 +2,20 @@ package main
 
 import "fmt"
 
-func main() {
-	arr := []int{17, 3, 23, 52, 12, 32, 45}
+var initArr = []int{13, 5, 6, 1, 45, 123, 824, 62, 940, 173, 891, 401, 441}
 
+func main() {
+	arr := initArr
 	fmt.Println("Initial array: ", arr)
 
 	fmt.Println("Insertion Sort:")
 	InsertionSort(arr)
+	fmt.Println(arr)
+
+	// Reset arr & start selection sort
+	arr = initArr
+	fmt.Println("Selection Sort:")
+	SelectionSort(arr)
 	fmt.Println(arr)
 
 }
