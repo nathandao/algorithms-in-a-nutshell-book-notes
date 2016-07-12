@@ -43,6 +43,7 @@ func main() {
 		"SELECTION": SelectionSort,
 		"HEAP":      HeapSort,
 		"QUICK":     QuickSort,
+		"BUCKET":    BucketSort,
 	}
 
 	for sort_name, sort_handler := range methods {
@@ -69,7 +70,7 @@ func main() {
 			}
 			prev_exec_t = exec_t
 
-			fmt.Println("Size:", len(s), ", Time:", time.Now().UnixNano()-start,
+			fmt.Println("Size:", len(s), ", Time:", exec_t,
 				", Time Diff:", t_diff)
 		}
 	}
