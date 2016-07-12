@@ -31,9 +31,6 @@ func (h *Bucket) Pop() interface{} {
 func BucketSort(s []int) []int {
 	// Set bucket size to be 10, 100, 1000, ... depending on the list size.
 	bl := int(math.Pow(10, float64(len(strconv.Itoa(len(s)))-2)))
-	if bl > 1000 {
-		bl = 1000
-	}
 	buckets := make([]Bucket, bl)
 
 	// Get max & min value

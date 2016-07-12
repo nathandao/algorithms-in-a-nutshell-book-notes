@@ -24,6 +24,9 @@ func generateBenchmarkSlices() [][]int {
 		make([]int, 5120),
 		make([]int, 10240),
 		make([]int, 20480),
+		make([]int, 40960),
+		make([]int, 81920),
+		make([]int, 163840),
 	}
 
 	for i, arr := range slices {
@@ -49,29 +52,31 @@ func main() {
 	for sort_name, sort_handler := range methods {
 		fmt.Println("\n===", sort_name, "SORT ===")
 
-		// First, sort the test array to check if the algorithm works correctly.
+		// Sort the test array to check if the algorithm works correctly.
 		test_slice := []int{5, 4, 1, 8, 34, 198, 89, 1, 0, 12, 53}
 		fmt.Println("Slice:", test_slice)
 		fmt.Println("Sorted slice:", sort_handler(test_slice))
 
+		// Start benchmark with different slice sizes.
+		fmt.Println("Benchmark:")
 		prev_exec_t := int64(0)
 		t_diff := 0.0
 
-		// Start benchmark with different slice sizes.
-		fmt.Println("Benchmark:")
 		for _, s := range benchmark_slices {
+
+			// Run sorts.
+			arr := s
 			start := time.Now().UnixNano()
-			sort_handler(s)
+			sort_handler(arr)
 			exec_t := time.Now().UnixNano() - start
 
-			// Calculate t(n) / t(n - 1)
+			// Calculate t(n) / t(n - 1).
 			if prev_exec_t != 0 {
 				t_diff = float64(exec_t) / float64(prev_exec_t)
 			}
 			prev_exec_t = exec_t
 
-			fmt.Println("Size:", len(s), ", Time:", exec_t,
-				", Time Diff:", t_diff)
+			fmt.Println("Size:", len(s), ", Time:", exec_t, ", Time Diff:", t_diff)
 		}
 	}
 
