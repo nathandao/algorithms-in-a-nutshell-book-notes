@@ -51,12 +51,24 @@ func main() {
 		fmt.Println("Slice:", test_slice)
 		fmt.Println("Sorted slice:", sort_handler(test_slice))
 
+		prev_exec_t := int64(0)
+		t_diff := 0.0
+
 		// Start benchmark with different slice sizes.
 		fmt.Println("Benchmark:")
 		for _, s := range benchmark_slices {
 			start := time.Now().UnixNano()
 			sort_handler(s)
-			fmt.Println("Size:", len(s), ", Time:", time.Now().UnixNano()-start)
+			exec_t := time.Now().UnixNano() - start
+
+			// Calculate t(n) / t(n - 1)
+			if prev_exec_t != 0 {
+				t_diff = float64(exec_t) / float64(prev_exec_t)
+			}
+			prev_exec_t = exec_t
+
+			fmt.Println("Size:", len(s), ", Time:", time.Now().UnixNano()-start,
+				", Time Diff:", t_diff)
 		}
 	}
 
