@@ -42,6 +42,7 @@ func main() {
 		"INSERTION": InsertionSort,
 		"SELECTION": SelectionSort,
 		"HEAP":      HeapSort,
+		"QUICK":     QuickSort,
 	}
 
 	for sort_name, sort_handler := range methods {
