@@ -36,18 +36,19 @@ func generateBenchmarkSlices() [][]int {
 }
 
 func main() {
-	test_slice := []int{5, 4, 1, 8, 34, 198, 89, 1, 0, 12, 53}
 	benchmark_slices := generateBenchmarkSlices()
 
 	methods := map[string]func([]int) []int{
 		"INSERTION": InsertionSort,
 		"SELECTION": SelectionSort,
+		"HEAP":      HeapSort,
 	}
 
 	for sort_name, sort_handler := range methods {
 		fmt.Println("\n===", sort_name, "SORT ===")
 
 		// First, sort the test array to check if the algorithm works correctly.
+		test_slice := []int{5, 4, 1, 8, 34, 198, 89, 1, 0, 12, 53}
 		fmt.Println("Slice:", test_slice)
 		fmt.Println("Sorted slice:", sort_handler(test_slice))
 
