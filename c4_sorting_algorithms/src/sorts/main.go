@@ -1,21 +1,59 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"math/rand"
+	"time"
+)
 
-var initArr = []int{13, 5, 6, 1, 45, 123, 824, 62, 940, 173, 891, 401, 441}
+// Generate a slice comprises of  n-size arrays, in which the later is 2 times
+// larger than the former.
+func generateBenchmarkSlices() [][]int {
+	r := rand.New(rand.NewSource(time.Now().UnixNano()))
+
+	slices := [][]int{
+		make([]int, 10),
+		make([]int, 20),
+		make([]int, 40),
+		make([]int, 80),
+		make([]int, 160),
+		make([]int, 320),
+		make([]int, 640),
+		make([]int, 1280),
+		make([]int, 2560),
+		make([]int, 5120),
+	}
+
+	for i, arr := range slices {
+		for j := 0; j < len(arr); j++ {
+			slices[i][j] = r.Int()
+		}
+	}
+
+	return slices
+}
 
 func main() {
-	arr := initArr
-	fmt.Println("Initial array: ", arr)
+	test_slice := []int{5, 4, 1, 8, 34, 198, 89, 1, 0, 12, 53}
+	benchmark_slices := generateBenchmarkSlices()
 
-	fmt.Println("Insertion Sort:")
-	InsertionSort(arr)
-	fmt.Println(arr)
+	methods := map[string]func([]int) []int{
+		"INSERTION": InsertionSort,
+		"SELECTION": SelectionSort,
+	}
 
-	// Reset arr & start selection sort
-	arr = initArr
-	fmt.Println("Selection Sort:")
-	SelectionSort(arr)
-	fmt.Println(arr)
+	for sort_name, sort_handler := range methods {
+		// First, sort the 10-element array to check if the algorithm works correctly
+		fmt.Println("\n===", sort_name, "SORT ===")
+		fmt.Println("Slice:", test_slice)
+		fmt.Println("Sorted slice:", sort_handler(test_slice))
+
+		fmt.Println("Benchmark:")
+		for _, s := range benchmark_slices {
+			start := time.Now().UnixNano()
+			sort_handler(s)
+			fmt.Println("Size:", len(s), ", Time:", time.Now().UnixNano()-start)
+		}
+	}
 
 }

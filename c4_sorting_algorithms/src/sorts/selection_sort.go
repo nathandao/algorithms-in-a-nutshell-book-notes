@@ -10,7 +10,9 @@ func selectMax(arr []int) int {
 	return maxPos
 }
 
-func SelectionSort(arr []int) {
+func SelectionSort(values []int) []int {
+	arr := values
+
 	for i := len(arr) - 1; i >= 0; i-- {
 		// Find largest value in each sub-slice
 		maxPos := selectMax(arr[0 : i+1])
@@ -23,4 +25,6 @@ func SelectionSort(arr []int) {
 			arr[i] = temp
 		}
 	}
+
+	return arr
 }
