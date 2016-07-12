@@ -43,11 +43,13 @@ func main() {
 	}
 
 	for sort_name, sort_handler := range methods {
-		// First, sort the 10-element array to check if the algorithm works correctly
 		fmt.Println("\n===", sort_name, "SORT ===")
+
+		// First, sort the test array to check if the algorithm works correctly.
 		fmt.Println("Slice:", test_slice)
 		fmt.Println("Sorted slice:", sort_handler(test_slice))
 
+		// Start benchmark with different slice sizes.
 		fmt.Println("Benchmark:")
 		for _, s := range benchmark_slices {
 			start := time.Now().UnixNano()
