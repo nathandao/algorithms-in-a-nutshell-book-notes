@@ -22,6 +22,8 @@ func generateBenchmarkSlices() [][]int {
 		make([]int, 1280),
 		make([]int, 2560),
 		make([]int, 5120),
+		make([]int, 10240),
+		make([]int, 20480),
 	}
 
 	for i, arr := range slices {
