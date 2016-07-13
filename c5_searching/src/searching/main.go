@@ -42,6 +42,7 @@ func main() {
 
 	methods := map[string]func([]int, int) bool{
 		"SEQUENTIAL SEARCH": SequentialSearch,
+		"HASH BASED SEARCH": HashBasedSearch,
 	}
 
 	for searchMethod, searchHandler := range methods {
@@ -55,11 +56,23 @@ func main() {
 
 		// Benchmark info.
 		for i, s := range slices {
+
 			start := time.Now().UnixNano()
 			searchHandler(s, searchVals[i])
-			execTime := time.Now().UnixNano() - start
-			fmt.Println("Size:", len(s), ",", "Execution time:", execTime)
-		}
+			foundExecTime := time.Now().UnixNano() - start
 
+			start = time.Now().UnixNano()
+			searchHandler(s, -1)
+			notFoundExecTime := time.Now().UnixNano() - start
+			fmt.Println("Size:", len(s), ", EXEC TIME:", "found:", foundExecTime,
+				"not-found:", notFoundExecTime)
+		}
 	}
+
+	// For binary search
+	testSlice = []int{5, 10, 12, 12, 19, 23, 23, 32, 32, 41, 44, 55, 93, 234}
+	fmt.Println("\n===== BINARY SEARCH =====")
+	fmt.Println(testSlice)
+	fmt.Println("Search", valFound, ":", BinarySearch(testSlice, valFound),
+		", Search", valNotFound, ":", BinarySearch(testSlice, valNotFound))
 }
