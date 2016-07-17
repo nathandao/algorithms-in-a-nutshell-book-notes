@@ -37,6 +37,8 @@ The key for hash-based search performance is the hash key-value table, which is 
 
 ### Some key concepts of hash-based search:
 
-- Managing colisions: colisoin happens when hash function returns the same hashed key for different values. 2 ways of handling colisions: 1. Point the hash key to a list instead of an array. 2. Move down to the next empty hash-key value in the hash table and add the value there.
+- Managing collision: collision happens when hash function returns the same hashed key for different values. 
 
-- Choosing size of hash table: Usually a prime number, or 2^k - 1 - although that value is not always prime. This is to maximize the chance of even distribution of data accross hash keys.
+- 2 ways of handling collisions: 1. Point the hash key to a list instead of an array. 2. Move down to the next empty hash-key in the hash table and point it to the the value.
+
+- Choosing size of hash table: Usually a prime number, or 2^k - 1 - although that value is not always prime. This is to maximize the chance of even distribution of data accross hash keys. 
