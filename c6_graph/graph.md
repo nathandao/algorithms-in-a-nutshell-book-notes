@@ -30,10 +30,10 @@ Considering this directed weighted graph:
 
 ![Sample graph](./graph_sample.png)
 
-Store graph as adjacgency list:
+Store graph as adjacency list:
 
-![Adjacency list](./adjacgency_list.png)
+![Adjacency list](./adjacency_list.png)
 
 Store graph as adjacgency matrix:
 
-![Adjacency list](./adjacgency_matrix.png)
+![Adjacency list](./adjacency_matrix.png)
