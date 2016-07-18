@@ -2,7 +2,7 @@ package main
 
 // Search for a path from vs to vt and return an array that containes the
 // string node of each intersection.
-func DepthFirstSearch(g map[string][]string, vs, vt string) (bool, []string) {
+func DepthFirstSearch(g Graph, vs, vt string) (bool, []string) {
 
 	// Initiate pred and color array with empty strings and default color WHITE.
 	color := make(map[string]string, len(g))
@@ -42,7 +42,7 @@ func DepthFirstSearch(g map[string][]string, vs, vt string) (bool, []string) {
 // dfsVisit recursively visits all possible paths from branch u, until the
 // destination t is reached. Branch is marked with color WHITE = unvisited,
 // GRAY = processing and BLACK = visited.
-func dfsVisit(g map[string][]string, u, t string, color, pred map[string]string) {
+func dfsVisit(g Graph, u, t string, color, pred map[string]string) {
 	// Processing.
 	color[u] = GRAY
 

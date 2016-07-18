@@ -6,11 +6,14 @@ const WHITE = "WHITE"
 const BLACK = "BLACK"
 const GRAY = "GRAY"
 
+type Graph map[string][]string
+
 func main() {
 
 	// Use a simple map[string][]string to represent a graph of vertices and a
 	// slice of each of their corresponding target vertices (edges).
-	G := map[string][]string{
+	// For a visual representation, check the image ./graph.png.
+	G := Graph{
 		"A": []string{"B", "C", "D", "F"},
 		"B": []string{"A", "D", "G"},
 		"C": []string{"A", "D"},
