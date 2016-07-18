@@ -14,7 +14,7 @@ func main() {
 	// slice of each of their corresponding target vertices (edges).
 	// For a visual representation, check the image ./graph.png.
 	G := Graph{
-		"A": []string{"B", "C", "D", "F"},
+		"A": []string{"B", "C", "D", "E", "F"},
 		"B": []string{"A", "D", "G"},
 		"C": []string{"A", "D"},
 		"D": []string{"A", "B", "E"},
@@ -33,12 +33,23 @@ func main() {
 
 	fmt.Println("=== DEPTH FIRST SEARCH ===")
 
-	found, pred := DepthFirstSearch(G, "A", "H")
-	fmt.Println(" Path exists from A to H:", found, ", path:", pred)
+	found, path := DepthFirstSearch(G, "A", "H")
+	fmt.Println("Path exists from A to H:", found, ", path:", path)
 
-	found, pred = DepthFirstSearch(G, "G", "B")
-	fmt.Println(" Path exists from G to B:", found, ", path:", pred)
+	found, path = DepthFirstSearch(G, "G", "B")
+	fmt.Println("Path exists from G to B:", found, ", path:", path)
 
-	found, pred = DepthFirstSearch(G, "A", "I")
-	fmt.Println(" Path exists from A to I:", found, ", path:", pred)
+	found, path = DepthFirstSearch(G, "A", "I")
+	fmt.Println("Path exists from A to I:", found, ", path:", path)
+
+	fmt.Println("=== BREADTH FIRST SEARCH ===")
+
+	dist, path := BreadthFirstSearch(G, "A", "H")
+	fmt.Println("Distance from A to H:", dist, ", path:", path)
+
+	dist, path = BreadthFirstSearch(G, "A", "B")
+	fmt.Println("Distance from A to B:", dist, ", path:", path)
+
+	dist, path = BreadthFirstSearch(G, "A", "I")
+	fmt.Println("Distance from A to I:", dist, ", path:", path)
 }
