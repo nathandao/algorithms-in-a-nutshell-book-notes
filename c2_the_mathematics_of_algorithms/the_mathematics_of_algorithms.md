@@ -27,7 +27,9 @@ By knowing the performance at each case, we can better pick what algorithm to us
 
 ## Performance family:
 
-O( f(n) ), where f(n) is a function of n, means if the instance size increases by n times, the algorithm's runtime will increase by f(n) times.
+O( f(n) ), where f(n) is a function of n, means how much work does the algorithm's implementation has to do in respect to size n of the dataset.
+
+For example, considering a set of data [n.1, n.2, n.3, ..., n.n] (with n number of elements) . If the algorithm needs to compare each element with the rest of n - 1 other elements, this means the number of comparisons needed to be done will be (n - 1) * n (since we need to do the n - 1 comparisons every element in the datase). From this, the big O performance family is O(n ^ 2).
 
 Performance family in order, from best to worst.
 
