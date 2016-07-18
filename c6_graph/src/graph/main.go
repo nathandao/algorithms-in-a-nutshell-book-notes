@@ -7,6 +7,9 @@ const BLACK = "BLACK"
 const GRAY = "GRAY"
 
 func main() {
+
+	// Use a simple map[string][]string to represent a graph of vertices and a
+	// slice of each of their corresponding target vertices (edges).
 	G := map[string][]string{
 		"A": []string{"B", "C", "D", "F"},
 		"B": []string{"A", "D", "G"},
