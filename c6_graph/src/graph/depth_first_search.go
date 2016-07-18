@@ -16,27 +16,20 @@ func DepthFirstSearch(g Graph, vs, vt string) (bool, []string) {
 	dfsVisit(g, vs, vt, color, pred)
 
 	// Construct a reverse path array from each node's pred.
-	path := []string{vt}
+	path := []string{}
 	current_node := vt
-	for current_node != vs && pred[current_node] != "" {
-		path = append(path, pred[current_node])
+	for current_node != "" {
+		path = append([]string{current_node}, path...)
 		current_node = pred[current_node]
 	}
-
-	// Reverse the path array to get a direction from vs to vt.
-	return_path := []string{}
-	for i := len(path) - 1; i >= 0; i-- {
-		return_path = append(return_path, path[i])
-	}
-
 	// If the first item in path is vs, a path is found, otherwise, there is no
 	// link between vs and vt. Thus, no path.
-	found_path := true
-	if return_path[0] != vs {
-		found_path = false
+	foundPath := true
+	if path[0] != vs {
+		foundPath = false
 	}
 
-	return found_path, return_path
+	return foundPath, path
 }
 
 // dfsVisit recursively visits all possible paths from branch u, until the

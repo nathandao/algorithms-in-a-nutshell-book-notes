@@ -31,6 +31,7 @@ func main() {
 	}
 	fmt.Println("\n**NOTE: SEE IMAGE './graph.png' FOR VISUAL PRESENTATION OF THE GRAPH\n")
 
+	// Depth-first search.
 	fmt.Println("=== DEPTH FIRST SEARCH ===")
 
 	found, path := DepthFirstSearch(G, "A", "H")
@@ -42,13 +43,14 @@ func main() {
 	found, path = DepthFirstSearch(G, "A", "I")
 	fmt.Println("Path exists from A to I:", found, ", path:", path)
 
-	fmt.Println("=== BREADTH FIRST SEARCH ===")
+	// Breadth-first search.
+	fmt.Println("\n=== BREADTH FIRST SEARCH ===")
 
 	dist, path := BreadthFirstSearch(G, "A", "H")
 	fmt.Println("Distance from A to H:", dist, ", path:", path)
 
-	dist, path = BreadthFirstSearch(G, "A", "B")
-	fmt.Println("Distance from A to B:", dist, ", path:", path)
+	dist, path = BreadthFirstSearch(G, "G", "B")
+	fmt.Println("Distance from G to B:", dist, ", path:", path)
 
 	dist, path = BreadthFirstSearch(G, "A", "I")
 	fmt.Println("Distance from A to I:", dist, ", path:", path)
