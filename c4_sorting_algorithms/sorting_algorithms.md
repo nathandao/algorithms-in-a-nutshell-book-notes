@@ -30,10 +30,16 @@ Use hash function to categorize values into buckets. Once done, just join the bu
 
 ## Usage suggestions
 
-Only a few items: Insertion Sort
-Items arn mostly sorted: Insertion Sort
-Concerned about worst-case scenarios: Heap Sort
-Interested in a goot average-case behaviour: Quick Sort 
-Items are drawn from a unitform dense universe: Bucket Sort
-Desire to write as little code as possible: Insertion Sort 
-Require stable sort: Merge Sort
+- Only a few items: Insertion Sort
+
+- Items are mostly sorted: Insertion Sort
+
+- Concerned about worst-case scenarios: Heap Sort
+
+- Interested in a goot average-case behaviour: Quick Sort 
+
+- Items are drawn from a unitform dense universe: Bucket Sort
+
+- Desire to write as little code as possible: Insertion Sort 
+
+- Require stable sort: Merge Sort
